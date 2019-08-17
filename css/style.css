@@ -67,7 +67,8 @@ body {
   flex: 0 0 40%;
   display: flex;
   justify-content: center;
-  align-items: center; }
+  align-items: center;
+  position: relative; }
   .search__input {
     font-family: inherit;
     font-size: inherit;
@@ -86,6 +87,21 @@ body {
     .search__input::placeholder {
       font-weight: 100;
       color: var(--color-grey-light-4); }
+  .search__input:focus ~ .search__sug {
+    visibility: visible; }
+  .search__sug {
+    list-style: none;
+    padding: 1rem;
+    color: var(--color-primary-light);
+    position: absolute;
+    top: 3.5rem;
+    left: 3rem;
+    background-color: #fff;
+    opacity: 0.8;
+    visibility: hidden; }
+    @media only screen and (max-width: 56.25em) {
+      .search__sug {
+        z-index: 20; } }
   .search__input:focus + .search__button {
     background-color: var(--color-grey-light-3); }
   .search__button {
@@ -102,6 +118,7 @@ body {
 
 .user-nav {
   align-self: stretch;
+  position: relative;
   display: flex;
   align-items: center; }
   .user-nav > * {
@@ -114,6 +131,11 @@ body {
     background-color: var(--color-grey-light-2); }
   .user-nav__icon-box {
     position: relative; }
+    .user-nav__icon-box:hover > ul {
+      top: 6.8rem;
+      visibility: visible;
+      transform: scale(1);
+      transition: all .8s; }
   .user-nav__icon {
     height: 2.25rem;
     width: 2.25rem;
@@ -131,6 +153,29 @@ body {
     display: flex;
     justify-content: center;
     align-items: center; }
+  .user-nav__msg-options {
+    list-style: none;
+    width: 200%;
+    position: absolute;
+    top: 0;
+    left: -6rem;
+    background-color: #fff;
+    opacity: 0.9;
+    visibility: hidden;
+    transform: scaleY(0.1); }
+    @media only screen and (max-width: 56.25em) {
+      .user-nav__msg-options {
+        z-index: 20; } }
+  .user-nav__msg-items {
+    text-align: center;
+    border-bottom: var(--line);
+    font-size: 1.5rem;
+    padding: 0.8rem 0; }
+    .user-nav__msg-items:hover {
+      background-color: var(--color-grey-light-2); }
+  .user-nav__msg-link:link, .user-nav__msg-link:visited {
+    text-decoration: none;
+    color: var(--color-primary); }
   .user-nav__user {
     position: relative; }
     .user-nav__user:hover > ul {
@@ -153,8 +198,9 @@ body {
         .user-nav__user-options {
           z-index: 20; } }
     .user-nav__user-items {
-      padding-top: 0.8rem;
-      font-size: 1.4rem; }
+      padding: 0.8rem 0;
+      font-size: 1.4rem;
+      border-bottom: var(--line); }
       .user-nav__user-items:hover {
         background-color: var(--color-grey-light-2); }
     .user-nav__user-link {
